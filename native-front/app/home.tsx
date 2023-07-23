@@ -1,7 +1,7 @@
 import { Box, Button } from 'native-base'
 import React from 'react'
 
-const home = () => {
+const Home = () => {
   return (
     <Box>
       <Button colorScheme="success">Success</Button>
@@ -9,4 +9,4 @@ const home = () => {
   )
 }
 
-export default home
+export default Home
