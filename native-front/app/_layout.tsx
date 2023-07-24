@@ -1,5 +1,5 @@
 import { Stack, useRouter } from 'expo-router'
-import { Box, Center, HStack, Icon, NativeBaseProvider, Pressable, Text } from 'native-base'
+import { Box, Center, HStack, Icon, NativeBaseProvider, Pressable, ScrollView, Text } from 'native-base'
 import { MaterialCommunityIcons, MaterialIcons } from '@expo/vector-icons'
 import { useState } from 'react'
 

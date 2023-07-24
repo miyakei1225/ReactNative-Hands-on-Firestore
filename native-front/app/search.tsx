@@ -1,9 +1,9 @@
-import { Box, Button, Center, FormControl, Input, Stack, Text } from 'native-base'
+import { Box, Button, Center, FormControl, Input, ScrollView, Text } from 'native-base'
 import React from 'react'
 
 const Search = () => {
   return (
-    <Box>
+    <ScrollView>
       <Center>
         <Text>検索画面</Text>
         <FormControl>
@@ -18,7 +18,7 @@ const Search = () => {
           </Center>
         </FormControl>
       </Center>
-    </Box>
+    </ScrollView>
   )
 }
 

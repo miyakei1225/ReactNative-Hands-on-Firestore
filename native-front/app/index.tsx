@@ -1,15 +1,15 @@
 import { useRouter, Link } from 'expo-router'
-import { Box, Center, Text } from 'native-base'
+import { Box, Center, ScrollView, Text } from 'native-base'
 
 const Page = () => {
   const router = useRouter()
   return (
-    <Box>
+    <ScrollView>
       <Center mt={'4'}>
         <Text>初期ページ</Text>
       </Center>
       <Link href="/home">ホーム画面へ</Link>
-    </Box>
+    </ScrollView>
   )
 }
 
