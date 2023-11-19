@@ -78,7 +78,7 @@ https://apps.apple.com/jp/app/expo-go/id982107779
 Google Play
 https://play.google.com/store/apps/details?id=host.exp.exponent&hl=ja&gl=US&pli=1
 
-### 環境構築は一旦ここまでで完了です！お疲れ様でした💪当日はよろしくお願いいたします！
+### 環境構築は一旦ここまでで完了です！お疲れ様でした💪当日はよろしくお願いいたします！ (環境構築中に手詰まりがあればお悩み相談チャンネルにて随時ご質問お待ちしております！)
 
 ### メモ書き　※こちらは事前に実行する必要はありません
 expoコマンドでReact Nativeプロジェクトを作成したい時のコマンド
