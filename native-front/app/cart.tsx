@@ -31,7 +31,7 @@ const Cart = () => {
       price: itemPrice,
       quantity: itemQuantity
     }
-    const docRef = doc(db, 'items', 'test')
+    const docRef = doc(db, 'items', Math.random().toString(32))
 
     console.log(newItem, '新しいアイテム')
     const result = await setDoc(
