@@ -3,7 +3,6 @@ import React, { useEffect, useState } from 'react'
 import { collection, doc, getDoc, getDocs, getFirestore, setDoc } from 'firebase/firestore'
 import ProductCard from '../components/ui-parts/ProductCard'
 import { app } from '../Firebase/config/firebaseConfig'
-import { TextInput } from 'react-native'
 
 const Cart = () => {
   type CartItem = {
@@ -12,7 +11,6 @@ const Cart = () => {
     quantity: number
   }
   const [cartItems, setCartItems] = useState<CartItem[]>([])
-  console.log(cartItems, 'アイテム一覧')
 
   const db = getFirestore(app)
   useEffect(() => {
@@ -31,7 +29,7 @@ const Cart = () => {
     const newItem = {
       name: itemName,
       price: itemPrice,
-      quantity: 3
+      quantity: itemQuantity
     }
     const docRef = doc(db, 'items', 'test')
 
@@ -69,17 +67,20 @@ const Cart = () => {
           ))}
           <Box mt={16}>
             <Text>商品追加</Text>
+            <Text mt={4}>商品名前</Text>
             <Input value={itemName} onChangeText={(e) => setItemName(e)} placeholder="商品名" />
+            <Text mt={4}>金額</Text>
             <Input
               value={String(itemPrice)}
               onChangeText={(e) => setItemPrice(Number(e))}
               placeholder="金額"
               keyboardType="numeric"
             />
+            <Text mt={4}>数量</Text>
             <Input
               value={String(itemQuantity)}
               onChangeText={(e) => setItemQuantity(Number(e))}
-              placeholder="金額"
+              placeholder="数量"
               keyboardType="numeric"
             />
             <Button onPress={onSubmit}>
