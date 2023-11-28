@@ -1,40 +1,32 @@
 import { Box, Button, Center, Divider, Input, ScrollView, Text } from 'native-base'
 import React, { useEffect, useState } from 'react'
-import { collection, doc, getDoc, getDocs, getFirestore, setDoc } from 'firebase/firestore'
+import { collection, doc, getDocs, getFirestore, setDoc } from 'firebase/firestore'
 import ProductCard from '../components/ui-parts/ProductCard'
 import { app } from '../Firebase/config/firebaseConfig'
 
+type CartItem = {
+  name: string
+  price: number
+  quantity: number
+}
+
 const Cart = () => {
-  type CartItem = {
-    name: string
-    price: number
-    quantity: number
-  }
   const [cartItems, setCartItems] = useState<CartItem[]>([])
+  const [itemName, setItemName] = useState('')
+  const [itemPrice, setItemPrice] = useState(0)
+  const [itemQuantity, setItemQuantity] = useState(0)
 
   const db = getFirestore(app)
   useEffect(() => {
     ;(async () => {
       const querySnapshot = await getDocs(collection(db, 'items'))
-      console.log(querySnapshot, 'クエリスナップショット')
       setCartItems(querySnapshot.docs.map((doc) => doc.data() as CartItem))
     })()
   }, [])
 
-  const [itemName, setItemName] = useState('')
-  const [itemPrice, setItemPrice] = useState(0)
-  const [itemQuantity, setItemQuantity] = useState(0)
-
   const onSubmit = async () => {
-    const newItem = {
-      name: itemName,
-      price: itemPrice,
-      quantity: itemQuantity
-    }
     const docRef = doc(db, 'items', Math.random().toString(32))
-
-    console.log(newItem, '新しいアイテム')
-    const result = await setDoc(
+    await setDoc(
       docRef,
       {
         name: itemName,
@@ -43,7 +35,6 @@ const Cart = () => {
       },
       { merge: true }
     )
-    console.log(result, '結果')
   }
 
   return (
@@ -57,8 +48,8 @@ const Cart = () => {
           <Center>
             <Divider width={'90%'} />
           </Center>
-          {cartItems.map((item) => (
-            <Box>
+          {cartItems.map((item, index) => (
+            <Box key={index}>
               <ProductCard name={item.name} price={item.price} quantity={item.quantity} />
               <Center marginTop={4}>
                 <Divider width={'90%'} />
